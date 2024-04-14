@@ -3,7 +3,12 @@ from rest_framework import serializers
 from .models import Todo
 
 
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+     class Meta:
+        model = User
+        fields = ('id', 'last_name', 'first_name', 'username', 'email',)
 class TodoSerializer(serializers.HyperlinkedModelSerializer):
+    user = UserSerializer()    
     class Meta:
         model = Todo
-        fields = ['id', 'title', 'description', 'created_at'] #, 'user'
+        fields = ['id', 'title', 'description', 'created_at', 'user',] #, 'user'

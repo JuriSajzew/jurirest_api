@@ -7,4 +7,4 @@ class Todo(models.Model):
     title = models.CharField(max_length=30)
     description = models.CharField(max_length=300)
     created_at = models.DateField(default=datetime.date.today)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
